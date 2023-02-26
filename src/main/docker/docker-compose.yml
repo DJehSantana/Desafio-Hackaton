@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: curso_rest
+      MYSQL_DATABASE: desafio
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
