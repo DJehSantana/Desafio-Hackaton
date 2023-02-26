@@ -6,23 +6,26 @@ import com.stefanini.service.JogadorService;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@ApplicationPath("/jogador")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+@Path("/jogador")
 public class JogadorResource {
 
     @Inject
-    JogadorService jogadorService;
+    private JogadorService jogadorService;
 
     @GET
     @Path("/{id}")
-    public Response pegarPorId(@PathParam("id") Long id){
+    public Response pegarPorId(@PathParam("id") Long id) {
         return Response.status(Response.Status.OK).entity(jogadorService.pegarPorId(id)).build();
     }
 
     @GET
     @Path("/todos")
-    public Response listarTodos(){
+    public Response listarTodos() {
         return Response.status(Response.Status.OK).entity(jogadorService.listarTodos()).build();
     }
 
@@ -32,13 +35,13 @@ public class JogadorResource {
         return Response.status(Response.Status.CREATED).build();
     }
 
-    @POST
+    @PUT
     public Response alterar(@Valid Jogador jogador) {
         jogadorService.alterar(jogador);
         return Response.status(Response.Status.OK).build();
     }
 
-    @POST
+    @DELETE
     @Path("/{id}")
     public Response deletar(@PathParam("id") Long id) {
         jogadorService.deletar(id);

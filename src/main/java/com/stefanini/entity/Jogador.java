@@ -22,11 +22,9 @@ public class Jogador {
     @Column
     private BigDecimal saldo;
 
-
     @ManyToMany
-    @JoinTable(name = "Jogador_Stefamon",
-            joinColumns = {@JoinColumn(name = "IdJogador")},
-            inverseJoinColumns = {@JoinColumn(name = "IdStefamon")})
+    @JoinTable(name = "Jogador_Stefamon", joinColumns = { @JoinColumn(name = "IdJogador") }, inverseJoinColumns = {
+            @JoinColumn(name = "IdStefamon") })
     private List<Stefamon> stefamons = new ArrayList<>();
 
     public Jogador() {
